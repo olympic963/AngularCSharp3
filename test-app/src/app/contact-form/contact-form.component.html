@@ -1,0 +1,19 @@
+<h2>{{ isEditMode ? 'Sửa danh bạ' : 'Thêm danh bạ' }}</h2>
+<form (ngSubmit)="saveContact()" #contactForm="ngForm">
+  <div>
+    <label for="name">Tên:</label>
+    <input id="name" type="text" [(ngModel)]="contact.name" name="name" #name="ngModel" required />
+    <div *ngIf="name.errors?.['required']" class="error">Tên không được để trống.</div>
+  </div>
+  <div>
+    <label for="phone">Số điện thoại:</label>
+    <input id="phone" type="text" [(ngModel)]="contact.phone" name="phone" #phone="ngModel" required pattern="^[0-9]{10,11}$" />
+    <div *ngIf="phone.errors?.['required']" class="error">Số điện thoại không được để trống.</div>
+    <div *ngIf="phone.errors?.['pattern']" class="error">Số điện thoại phải là 10-11 chữ số.</div>
+  </div>
+  <div>
+    <label for="note">Ghi chú:</label>
+    <input id="note" type="text" [(ngModel)]="contact.note" name="note" />
+  </div>x
+  <button type="submit" [disabled]="!contactForm.valid">{{ isEditMode ? 'Cập nhật' : 'Thêm mới' }}</button>
+</form>

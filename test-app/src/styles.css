@@ -1,0 +1,6 @@
+/* You can add global styles to this file, and also import other style files */
+
+.blue-bar {
+  background-color: rgba(0, 0, 255, 0.653);
+  height: 50px; /* Adjust height as needed */
+}

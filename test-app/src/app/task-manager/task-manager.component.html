@@ -1,0 +1,24 @@
+<div>
+    <h2>Danh sách công việc</h2>
+    <table border="1">
+        <thead>
+          <tr>
+            <th>Công việc</th>
+            <th>Ghi chú</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td *ngIf="task.name">{{ task.name }}</td>
+            <td *ngIf="task.note">{{ task.note }}</td> 
+          </tr>
+        </tbody>
+      </table>
+      
+    <div>
+      <br />
+      <input [(ngModel)]="newTask" placeholder="Nhập công việc mới" />
+      <input [(ngModel)]="newNote" placeholder="Nhập ghi chú" />
+      <button (click)="addTask()">Thêm</button>
+    </div>
+</div>

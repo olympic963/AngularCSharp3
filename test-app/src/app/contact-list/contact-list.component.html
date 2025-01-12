@@ -1,0 +1,26 @@
+<h2>Danh sách danh bạ</h2>
+<button (click)="addContact()">Thêm mới</button>
+<table border="1" cellspacing="0" cellpadding="8" style="width: 100%; text-align: left; border-collapse: collapse;">
+  <thead>
+    <tr>
+      <th style="width: 25%;">Tên</th>
+      <th style="width: 25%;">Số điện thoại</th>
+      <th style="width: 25%;">Ghi chú</th>
+      <th style="width: 10%;">Sửa/Xóa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let contact of contacts; let i = index"
+      [style.background]="i % 2 === 0 ? '#f9f9f9' : '#ffffff'"
+    >
+      <td>{{ contact.name }}</td>
+      <td>{{ contact.phone }}</td>
+      <td>{{ contact.note || 'Không có ghi chú' }}</td>
+      <td>
+        <button (click)="editContact(contact)">Sửa</button>
+        <button (click)="deleteContact(contact.id)">Xóa</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,91 @@
+<div class="blue-bar"></div>
+<div class="container mt-3">
+  <h1 class="text-center mb-4">Danh sách nhân viên</h1>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label for="searchName">Tìm theo tên:</label>
+      <!-- <input 
+        id="searchName"
+        type="text" 
+        class="form-control" 
+        placeholder="Tìm theo tên" 
+        [(ngModel)]="searchName" 
+        (input)="searchEmployees()" /> -->
+        <input 
+        id="searchName"
+        type="text" 
+        class="form-control" 
+        placeholder="Tìm theo tên" 
+        [(ngModel)]="searchName" 
+         />
+    </div>
+    <div class="col-md-4">
+      <label for="searchPosition">Tìm theo vị trí:</label>
+      <input 
+        id="searchPosition"
+        type="text" 
+        class="form-control" 
+        placeholder="Tìm theo vị trí" 
+        [(ngModel)]="searchPosition" 
+         />
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+      <button class="btn btn-primary w-100" (click)="searchEmployees()">Tìm kiếm</button>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-8 ">
+      <button class="btn btn-primary" (click)="addEmployee()">Thêm Nhân Viên</button>
+    </div> 
+    <div class="col-md-4 d-flex align-items-center justify-content-end">
+      <label for="sortBy" class="me-2 mb-0">Sắp xếp theo:</label>
+      <select id="sortBy" class="form-select" style="width: auto; margin-left: 0;" [(ngModel)]="sortBySalary" (change)="sortEmployees(sortBySalary)">
+          <option value="">Mặc định</option>
+          <option value="asc">Lương tăng dần</option>
+          <option value="desc">Lương giảm dần</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Tên</th>
+          <th>Vị trí</th>
+          <th>Lương</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of paginatedEmployees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.position }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning me-2" (click)="editEmployee(employee.id)">Sửa</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee.id)">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <nav *ngIf="totalPages > 1" aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngIf="currentPage > 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Lùi</a>
+      </li>
+      <li *ngFor="let page of [].constructor(totalPages); let i = index" 
+          class="page-item" [class.active]="currentPage === i + 1">
+        <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+      </li>
+      <li class="page-item" *ngIf="currentPage < totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Tiến</a>
+      </li>
+    </ul>
+  </nav>
+</div>
