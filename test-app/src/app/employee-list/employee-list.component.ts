@@ -39,10 +39,10 @@ export class EmployeeListComponent implements OnInit {
     this.getEmployees();  
   }
 
-  resetSort(): void {
-    this.sortBySalary = '';  
-    this.getEmployees();  
-  }
+  // resetSort(): void {
+  //   this.sortBySalary = '';  
+  //   this.getEmployees();  
+  // }
 
   get paginatedEmployees(): Employee[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
