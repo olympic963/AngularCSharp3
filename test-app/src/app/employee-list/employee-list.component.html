@@ -44,12 +44,12 @@
   </div>
 
   <div class="row mb-3">
-    <div class="col-md-8 ">
+    <div class="col-md-9 ">
       <button class="btn btn-primary" (click)="addEmployee()">Thêm Nhân Viên</button>
     </div> 
-    <div class="col-md-4 d-flex align-items-center justify-content-end">
-      <label for="sortBy" class="me-2 mb-0">Sắp xếp theo:</label>
-      <select id="sortBy" class="form-select" style="width: auto; margin-left: 0;" [(ngModel)]="sortBySalary" (change)="sortEmployees(sortBySalary)">
+    <div class="col-md-3 d-flex align-items-center justify-content-end">
+      <label for="sortBy" class="me-2 mb-0 flex-shrink-0">Sắp xếp theo:</label>
+      <select id="sortBy" class="form-select ms-0" [(ngModel)]="sortBySalary" (change)="sortEmployees(sortBySalary)">
           <option value="">Mặc định</option>
           <option value="asc">Lương tăng dần</option>
           <option value="desc">Lương giảm dần</option>
