@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
   currentPage: number = 1; 
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 5;
   searchName: string = ''; 
   searchPosition: string = ''; 
   sortBySalary: string = '';
@@ -30,6 +30,11 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+  changeItemsPerPage(itemsPerPage: number): void {
+    this.itemsPerPage = itemsPerPage;
+    this.getEmployees(); 
+  }
+  
   searchEmployees(): void {
     this.getEmployees(); 
   }
@@ -38,11 +43,6 @@ export class EmployeeListComponent implements OnInit {
     this.sortBySalary = order;  
     this.getEmployees();  
   }
-
-  // resetSort(): void {
-  //   this.sortBySalary = '';  
-  //   this.getEmployees();  
-  // }
 
   get paginatedEmployees(): Employee[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;

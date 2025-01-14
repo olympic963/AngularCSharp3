@@ -29,8 +29,17 @@
         [(ngModel)]="searchPosition" 
          />
     </div>
-    <div class="col-md-4 d-flex align-items-end">
+    <div class="col-md-2 d-flex align-items-end">
       <button class="btn btn-primary w-100" (click)="searchEmployees()">Tìm kiếm</button>
+    </div>
+    <div class="col-md-2 ">
+      <label for="itemsPerPage" class="me-2 mb-0">Số bản ghi mỗi trang:</label>
+      <select id="itemsPerPage" class="form-select" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage(itemsPerPage)">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+      </select>
     </div>
   </div>
 
