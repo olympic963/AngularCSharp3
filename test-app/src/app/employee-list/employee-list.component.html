@@ -4,14 +4,7 @@
   <div class="row mb-3">
     <div class="col-md-4">
       <label for="searchName">Tìm theo tên:</label>
-      <!-- <input 
-        id="searchName"
-        type="text" 
-        class="form-control" 
-        placeholder="Tìm theo tên" 
-        [(ngModel)]="searchName" 
-        (input)="searchEmployees()" /> -->
-        <input 
+      <input 
         id="searchName"
         type="text" 
         class="form-control" 
@@ -34,12 +27,6 @@
     </div>
     <div class="col-md-2">
       <label for="itemsPerPage" class="me-2 mb-0">Số bản ghi mỗi trang:</label>
-      <!-- <select id="itemsPerPage" class="form-select" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage(itemsPerPage)">
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-      </select> -->
       <input type="number" class="form-control" min="5" max="100" [(ngModel)]="itemsPerPage" (input)="changeItemsPerPage(itemsPerPage)" />
     </div>
   </div>
@@ -87,14 +74,20 @@
   <nav *ngIf="totalPages > 1" aria-label="Page navigation">
     <ul class="pagination justify-content-center">
       <li class="page-item" *ngIf="currentPage > 1">
-        <a class="page-link" (click)="changePage(currentPage - 1)">Lùi</a>
+        <a class="page-link" (click)="goToFirstPage()">Trang đầu</a>
       </li>
-      <li *ngFor="let page of [].constructor(totalPages); let i = index" 
-          class="page-item" [class.active]="currentPage === i + 1">
-        <a class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</a>
+      <li class="page-item" *ngIf="ellipsisFirst">
+        <a class="page-link">...</a>
+      </li>
+      <li *ngFor="let page of pageRange" 
+          class="page-item" [class.active]="currentPage === page">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" *ngIf="ellipsisEnd">
+        <a class="page-link">...</a>
       </li>
       <li class="page-item" *ngIf="currentPage < totalPages">
-        <a class="page-link" (click)="changePage(currentPage + 1)">Tiến</a>
+        <a class="page-link" (click)="goToLastPage()">Trang cuối</a>
       </li>
     </ul>
   </nav>
