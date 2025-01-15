@@ -27,11 +27,15 @@ export class EmployeeListComponent implements OnInit {
   getEmployees(): void {
     this.employeeService.searchEmployees(this.searchName, this.searchPosition, this.sortBySalary).subscribe((data) => {
       this.employees = data;
+      if (this.currentPage > this.totalPages) {
+        this.currentPage = this.totalPages; 
+      }
     });
   }
 
   changeItemsPerPage(itemsPerPage: number): void {
-    this.itemsPerPage = itemsPerPage;
+    this.itemsPerPage = +itemsPerPage;
+    this.currentPage = 1;
     this.getEmployees(); 
   }
   
@@ -74,14 +78,12 @@ export class EmployeeListComponent implements OnInit {
       next: (response) => {
         alert(response.message); 
         this.getEmployees(); 
-        if (this.currentPage > this.totalPages) {
-          this.currentPage = this.totalPages;
-        }
+        console.log("Tp: ", this.currentPage);
       },
       error: (error) => {
         alert('Xóa nhân viên thất bại');
         console.error(error);
       }
-    });    
-  }
+    });  
+  }  
 }

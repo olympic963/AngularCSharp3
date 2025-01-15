@@ -34,12 +34,13 @@
     </div>
     <div class="col-md-2 ">
       <label for="itemsPerPage" class="me-2 mb-0">Số bản ghi mỗi trang:</label>
-      <select id="itemsPerPage" class="form-select" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage(itemsPerPage)">
+      <!-- <select id="itemsPerPage" class="form-select" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage(itemsPerPage)">
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
           <option value="20">20</option>
-      </select>
+      </select> -->
+      <input type="number" class="form-control" min="5" max="100" [(ngModel)]="itemsPerPage" (input)="changeItemsPerPage(itemsPerPage)" />
     </div>
   </div>
 
