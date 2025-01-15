@@ -1,6 +1,6 @@
 <div class="blue-bar"></div>
 <div class="container mt-3">
-  <h1 class="text-center mb-4">Danh sách nhân viên</h1>
+  <h2 class="text-center mb-4">Danh sách nhân viên</h2>
   <div class="row mb-3">
     <div class="col-md-4">
       <label for="searchName">Tìm theo tên:</label>
@@ -32,7 +32,7 @@
     <div class="col-md-2 d-flex align-items-end">
       <button class="btn btn-primary w-100" (click)="searchEmployees()">Tìm kiếm</button>
     </div>
-    <div class="col-md-2 ">
+    <div class="col-md-2">
       <label for="itemsPerPage" class="me-2 mb-0">Số bản ghi mỗi trang:</label>
       <!-- <select id="itemsPerPage" class="form-select" [(ngModel)]="itemsPerPage" (change)="changeItemsPerPage(itemsPerPage)">
           <option value="5">5</option>
@@ -44,11 +44,11 @@
     </div>
   </div>
 
-  <div class="row mb-3">
-    <div class="col-md-9 ">
+  <div class="mb-3 d-flex justify-content-between">
+    <div>
       <button class="btn btn-primary" (click)="addEmployee()">Thêm Nhân Viên</button>
     </div> 
-    <div class="col-md-3 d-flex align-items-center justify-content-end">
+    <div class="d-flex align-items-center justify-content-end">
       <label for="sortBy" class="me-2 mb-0 flex-shrink-0">Sắp xếp theo:</label>
       <select id="sortBy" class="form-select ms-0" [(ngModel)]="sortBySalary" (change)="sortEmployees(sortBySalary)">
           <option value="">Mặc định</option>
