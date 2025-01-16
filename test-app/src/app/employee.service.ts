@@ -15,24 +15,27 @@ export interface Employee {
 export class EmployeeService {
   private apiUrl = 'https://localhost:7226/api/employees';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(this.apiUrl);
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.apiUrl}/${id}`);
   }
 
-  addEmployee(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.apiUrl, employee);
+  addEmployee(employee: Employee): Observable<{ message: string }> {
+    return this.http.post<{ message: string }>(this.apiUrl, employee);
   }
 
-  updateEmployee(employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.apiUrl}/${employee.id}`, employee);
+  updateEmployee(employee: Employee): Observable<{ message: string }> {
+    return this.http.put<{ message: string }>(
+      `${this.apiUrl}/${employee.id}`,
+      employee
+    );
   }
 
-  deleteEmployee(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  deleteEmployee(id: number): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/${id}`);
   }
-  
+
   searchEmployees(name?: string, position?: string, sortBySalary?: string): Observable<Employee[]> {
     let params = new HttpParams();
     if (name) {
