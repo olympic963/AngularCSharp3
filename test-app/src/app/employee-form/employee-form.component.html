@@ -12,7 +12,7 @@
                      required #name="ngModel">
               <div *ngIf="name.invalid && (name.dirty || name.touched)" 
                    class="text-danger">
-                <small *ngIf="name.errors?.['required']">
+                <small>
                   Tên là bắt buộc
                 </small>
               </div>
@@ -25,7 +25,7 @@
                      required #position="ngModel">
               <div *ngIf="position.invalid && (position.dirty || position.touched)" 
                    class="text-danger">
-                <small *ngIf="position.errors?.['required']">
+                <small>
                   Vị trí là bắt buộc
                 </small>
               </div>
@@ -38,7 +38,7 @@
                      required #salary="ngModel">
               <div *ngIf="salary.invalid && (salary.dirty || salary.touched)" 
                    class="text-danger">
-                <small *ngIf="salary.errors?.['required']">
+                <small>
                   Lương là bắt buộc
                 </small>
               </div>

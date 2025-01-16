@@ -76,6 +76,9 @@
       <li class="page-item" *ngIf="currentPage > 1">
         <a class="page-link" (click)="goToFirstPage()">Trang đầu</a>
       </li>
+      <li class="page-item" *ngIf="currentPage > 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)">Lùi</a>
+      </li>
       <li class="page-item" *ngIf="ellipsisFirst">
         <a class="page-link">...</a>
       </li>
@@ -85,6 +88,9 @@
       </li>
       <li class="page-item" *ngIf="ellipsisEnd">
         <a class="page-link">...</a>
+      </li>
+      <li class="page-item" *ngIf="currentPage < totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)">Tiến</a>
       </li>
       <li class="page-item" *ngIf="currentPage < totalPages">
         <a class="page-link" (click)="goToLastPage()">Trang cuối</a>
