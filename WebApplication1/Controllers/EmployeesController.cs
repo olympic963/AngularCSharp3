@@ -31,12 +31,15 @@ namespace WebApplication1.Controllers
     new Employee { Id = 20, Name = "Lê Thị T", Position = "Kiểm thử", Salary = 55000 }
 };
 
-
-
-        [HttpGet]
-        public ActionResult<IEnumerable<Employee>> GetEmployees()
+        [HttpGet("{id}")]
+        public ActionResult<Employee> GetEmployeeById(int id)
         {
-            return Ok(employees);
+            var employee = employees.FirstOrDefault(e => e.Id == id);
+            if (employee == null)
+            {
+                return NotFound(new { message = $"Không tìm thấy nhân viên với ID: {id}" });
+            }
+            return Ok(employee);
         }
 
         [HttpPost]
@@ -51,20 +54,21 @@ namespace WebApplication1.Controllers
                 employee.Id = 1;
             }
             employees.Add(employee);
-            return Ok(employee);
+            return Ok(new { message = "Đã thêm thông tin nhân viên thành công." });
         }
 
         [HttpPut("{id}")]
         public ActionResult UpdateEmployee(int id, Employee updatedEmployee)
         {
             var employee = employees.FirstOrDefault(e => e.Id == id);
-            if (employee == null) return NotFound();
-
+            if (employee == null)
+            {
+                return NotFound(new { message = $"Không tìm thấy nhân viên với ID: {id}" });
+            }
             employee.Name = updatedEmployee.Name;
             employee.Position = updatedEmployee.Position;
             employee.Salary = updatedEmployee.Salary;
-
-            return Ok(employee);
+            return Ok(new { message = $"Thông tin nhân viên với id: {id} đã được cập nhật." });
         }
 
         [HttpDelete("{id}")]

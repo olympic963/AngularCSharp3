@@ -5,10 +5,21 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Employees": {
+    "/api/Employees/{id}": {
       "get": {
         "tags": [
           "Employees"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -16,63 +27,23 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Employee"
-                  }
+                  "$ref": "#/components/schemas/Employee"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Employee"
-                  }
+                  "$ref": "#/components/schemas/Employee"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Employee"
-                  }
+                  "$ref": "#/components/schemas/Employee"
                 }
               }
             }
           }
         }
       },
-      "post": {
-        "tags": [
-          "Employees"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Employee"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Employee"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Employee"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Employees/{id}": {
       "put": {
         "tags": [
           "Employees"
@@ -128,6 +99,37 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Employees": {
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
